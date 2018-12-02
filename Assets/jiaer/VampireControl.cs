@@ -103,7 +103,7 @@ public class VampireControl : MonoBehaviour {
             DecreaseHP(infactcost);
         }
         else if (Input.GetMouseButtonUp(0))
-        {            
+        {           
             //GetComponent<Collider2D>().isTrigger = true;
             GetComponent<BoxCollider2D>().enabled = false;
             gameObject.layer = 11;
