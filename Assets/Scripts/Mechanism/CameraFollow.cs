@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
 	[HideInInspector]
 	public new Transform transform;
 	public Vector3 cameraOffset;
-	public bool useFixedUpdate = false;
+	public bool useFixedUpdate = true;//ƒ¨»œ≤…”√FixUpdate
 	
 	private Vector3 _smoothDampVelocity;
 	private float lastZCam;
@@ -23,9 +23,15 @@ public class CameraFollow : MonoBehaviour
 		transform = gameObject.transform;
 		lastZCam = transform.position.z;
 	}
-	
-	
-	void LateUpdate()
+
+    private void Start()
+    {
+        rightUpCorner = GameObject.Find("RightUpCorner").transform;
+        leftDownCorner = GameObject.Find("LeftDownCorner").transform;
+    }
+
+
+    void LateUpdate()
 	{
 		if( !useFixedUpdate )
 			updateCameraPosition();

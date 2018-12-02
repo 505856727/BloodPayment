@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Level/Level_1.unity
+    guid: 2539d9dc650f11e44aa765205b6067cc
   - enabled: 1
-    path: Assets/2DDL/Examples/0 - DUNGEON GAME/Level 1- StartGame.unity
-    guid: 2a3f4b084d073144ab38d2602cbdf59e
+    path: Assets/Scenes/Level/Level_2.unity
+    guid: 674865eebf7863d46a2647ae2f0e9d20
   m_configObjects: {}

@@ -126,4 +126,10 @@ public class Human_PlayerController : MonoBehaviour
             }
         }
     }
+
+    //被吸血
+    public void TakeSuckBlood(float suckDamage)
+    {
+        vitality -= suckDamage;
+    }
 }
