@@ -23,6 +23,7 @@ public class DoorOpenPortrait : MonoBehaviour {
         if (!islast && (collision.gameObject.layer == 10 || collision.gameObject.layer == 8))
         {
             //office.transform.position = Vector3.MoveTowards(officeori, officepos, speed * Time.deltaTime);
+            print(1);
             StopCoroutine("OfficeDown");
             StartCoroutine("OfficeUp");
         }
