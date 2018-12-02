@@ -227,35 +227,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1032332069581882, guid: c3ca52f27aa5406448aaa5e48643ca45, type: 2}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 61350531137461640, guid: c3ca52f27aa5406448aaa5e48643ca45,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61350531137461640, guid: c3ca52f27aa5406448aaa5e48643ca45,
-        type: 2}
-      propertyPath: m_Offset.x
-      value: 0.33391505
-      objectReference: {fileID: 0}
-    - target: {fileID: 61350531137461640, guid: c3ca52f27aa5406448aaa5e48643ca45,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 2.0870137
-      objectReference: {fileID: 0}
-    - target: {fileID: 61350531137461640, guid: c3ca52f27aa5406448aaa5e48643ca45,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: -0.3573575
-      objectReference: {fileID: 0}
-    - target: {fileID: 61350531137461640, guid: c3ca52f27aa5406448aaa5e48643ca45,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 7.3326664
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3ca52f27aa5406448aaa5e48643ca45, type: 2}
   m_IsPrefabAsset: 0
@@ -652,21 +623,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1032332069581882, guid: c3ca52f27aa5406448aaa5e48643ca45,
     type: 2}
   m_PrefabInternal: {fileID: 132226440}
---- !u!70 &999174011
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 999174005}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.5, y: -0.3}
-  m_Size: {x: 2, y: 7}
-  m_Direction: 0
 --- !u!1001 &1147446966
 Prefab:
   m_ObjectHideFlags: 0
