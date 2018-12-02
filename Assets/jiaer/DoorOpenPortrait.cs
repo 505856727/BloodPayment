@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DoorOpenPortrait : MonoBehaviour {
     public GameObject office;
+    public Sprite buttomup;
+    public Sprite buttomdown;
     public Vector3 officeori;
     public Vector3 officepos;
     public bool islast;
@@ -14,6 +16,7 @@ public class DoorOpenPortrait : MonoBehaviour {
         if (collision.gameObject.layer == 10 || collision.gameObject.layer == 8)
         {
             //office.transform.position = Vector3.MoveTowards(officepos, officeori, speed * Time.deltaTime);
+            GetComponent<SpriteRenderer>().sprite = buttomdown;
             StopCoroutine("OfficeUp");
             StartCoroutine("OfficeDown");
         }
@@ -23,7 +26,7 @@ public class DoorOpenPortrait : MonoBehaviour {
         if (!islast && (collision.gameObject.layer == 10 || collision.gameObject.layer == 8))
         {
             //office.transform.position = Vector3.MoveTowards(officeori, officepos, speed * Time.deltaTime);
-            print(1);
+            GetComponent<SpriteRenderer>().sprite = buttomup;
             StopCoroutine("OfficeDown");
             StartCoroutine("OfficeUp");
         }
