@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - floor
+  - maincharacter
+  - Monster
+  - onlyTrigger
+  - deadTrigger
+  - v1
+  - TurnOn
+  - Blood
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Player
+  - Ground
+  - Vampire
+  - VampireTest
+  - airwall
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: 7
+    uniqueID: 3257539817
+    locked: 0
+  - name: 6
+    uniqueID: 3408401757
+    locked: 0
+  - name: 5
+    uniqueID: 3764592289
+    locked: 0
+  - name: 4
+    uniqueID: 2685328623
+    locked: 0
+  - name: 3
+    uniqueID: 650601189
+    locked: 0
+  - name: 2
+    uniqueID: 339017321
+    locked: 0
+  - name: 1
+    uniqueID: 1617057785
+    locked: 0
