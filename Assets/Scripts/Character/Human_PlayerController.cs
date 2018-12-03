@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Human_PlayerController : MonoBehaviour
 {
@@ -25,7 +26,10 @@ public class Human_PlayerController : MonoBehaviour
 
     public AudioClip[] jumpClips;           // Array of clips for when the player jumps.
     public AudioClip[] switchClips;           // Array of clips for when the player jumps.
-                                              // Use this for initialization
+
+    //血条，或者渴望值的Slider
+    public Slider hpSlider;
+
     void Start()
     {
         //初始化阳光触发时间
@@ -183,6 +187,10 @@ public class Human_PlayerController : MonoBehaviour
     {
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("girlstand")|| anim.GetCurrentAnimatorStateInfo(0).IsName("girlblood"))
         {
+            if (hpSlider)
+            {
+                hpSlider.value = vitality;
+            }
             vitality -= suckDamage;
             anim.SetBool("beingSuckedBlood", true);
             isBeingSucked = true;

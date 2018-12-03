@@ -8,6 +8,7 @@ public class VampireAttribute : MonoBehaviour {
     public float burnInteval = 1.0f;//被阳光灼烧的间隔
     private float burnTime = float.MinValue;
     private DynamicLight2D.DynamicLight[] SunLights;
+    private VampireControl controller;
     //动画状态机
     public Animator m_anim;
     //音效
@@ -16,6 +17,7 @@ public class VampireAttribute : MonoBehaviour {
     void Start () {
         //初始化阳光触发时间
         GameObject SunLightsTransform = GameObject.Find("SunLights");
+        controller = GetComponent<VampireControl>();
         if (SunLightsTransform)
         {
             SunLights = SunLightsTransform.GetComponentsInChildren<DynamicLight2D.DynamicLight>();
@@ -55,9 +57,8 @@ public class VampireAttribute : MonoBehaviour {
                     Debug.Log("Burn ");
                     
                     //扣血跟距离挂钩
-                    //Debug.Log((gameObject.transform.position - light.transform.position));
                     float rawDamage = burnDamage / (gameObject.transform.position - light.transform.position).sqrMagnitude;
-                    //Debug.Log(Mathf.Clamp(rawDamage, 0.0f, MaxDamage));
+                    controller.DecreaseHP(Mathf.Clamp(rawDamage, 5.0f, MaxDamage));
                     burnTime = Time.time;
                     int i = Random.Range(0, beLightedClip.Length);
                     AudioSource.PlayClipAtPoint(beLightedClip[i], transform.position);
