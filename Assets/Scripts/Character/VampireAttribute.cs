@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class VampireAttribute : MonoBehaviour {
     public float burnDamage = 10.0f;//burn Damage代表强度，并不代表实际伤害，实际伤害随着距离越近越高
     public float MaxDamage = 10.0f;//灼伤的最大伤害，防止暴毙
