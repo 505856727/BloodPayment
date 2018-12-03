@@ -10,6 +10,8 @@ public class VampireAttribute : MonoBehaviour {
     private DynamicLight2D.DynamicLight[] SunLights;
     //动画状态机
     public Animator m_anim;
+    //音效
+    public AudioClip[] beLightedClip;
     // Use this for initialization
     void Start () {
         //初始化阳光触发时间
@@ -36,7 +38,7 @@ public class VampireAttribute : MonoBehaviour {
         if (gameObject.GetInstanceID() == g.GetInstanceID())
         {
             Debug.Log("OnEnterSunshine");
-            GetComponent<SpriteRenderer>().color = Color.red;
+            //GetComponent<SpriteRenderer>().color = Color.red;
             burnTime = Time.time;//开始计时
             m_anim.SetBool("beLighted", true);
         }
@@ -57,6 +59,8 @@ public class VampireAttribute : MonoBehaviour {
                     float rawDamage = burnDamage / (gameObject.transform.position - light.transform.position).sqrMagnitude;
                     //Debug.Log(Mathf.Clamp(rawDamage, 0.0f, MaxDamage));
                     burnTime = Time.time;
+                    int i = Random.Range(0, beLightedClip.Length);
+                    AudioSource.PlayClipAtPoint(beLightedClip[i], transform.position);
                 }
                 break;
             }

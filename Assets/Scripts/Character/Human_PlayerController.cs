@@ -11,11 +11,9 @@ public class Human_PlayerController : MonoBehaviour
     public bool jump = false;               // Condition for whether the player should jump.
 
     public float vitality = 100.0f; //活力对角色移动力和跳跃力的影响，暂时是线性的
-
-
     public float moveForce = 365f;          // Amount of force added to move the player left and right.
     public float maxSpeed = 5f;             // The fastest the player can travel in the x axis.
-    public AudioClip[] jumpClips;           // Array of clips for when the player jumps.
+
     public float jumpForce = 1000f;         // Amount of force added when the player jumps.
 
 
@@ -32,6 +30,9 @@ public class Human_PlayerController : MonoBehaviour
 
     public float turnLightRadius = 1.0f;
     private Animator m_anim;
+
+    public AudioClip[] jumpClips;           // Array of clips for when the player jumps.
+    public AudioClip[] switchClips;           // Array of clips for when the player jumps.
     // Use this for initialization
     void Start()
     {
@@ -41,11 +42,6 @@ public class Human_PlayerController : MonoBehaviour
         groundCheck = transform.Find("groundCheck");
         anim = GetComponent<Animator>();
     }
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if(collision.gameObject.tag == "")
-    //}
 
     // Update is called once per frame
     void Update()
@@ -97,7 +93,7 @@ public class Human_PlayerController : MonoBehaviour
         {
             // Play a random jump audio clip.
             int i = Random.Range(0, jumpClips.Length);
-            //AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
+            AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
 
             // Add a vertical force to the player.
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce * vitality / 100.0f));
@@ -131,6 +127,8 @@ public class Human_PlayerController : MonoBehaviour
             if (collider.CompareTag("TurnOn"))
             {
                 collider.GetComponent<TurnOn>().turnOn();
+                int i = Random.Range(0, switchClips.Length);
+                AudioSource.PlayClipAtPoint(switchClips[i], transform.position);
             }
         }
     }
@@ -147,26 +145,4 @@ public class Human_PlayerController : MonoBehaviour
         }
         else return false;//角色在移动 无法吸血
     }
-
-    //IEnumerator recoverFromSuckingBlood()
-    //{
-    //    yield return new WaitForSeconds(GetAnimLengthByName("girlblood"));
-    //    anim.SetBool("beingSuckedBlood", false);
-    //}
-
-    //public float GetAnimLengthByName(string name)
-    //{
-    //    float length = 0;
-    //    AnimationClip[] clips = anim.runtimeAnimatorController.animationClips;
-    //    foreach (AnimationClip clip in clips)
-    //    {
-    //        if (clip.name.Equals(name))
-    //        {
-    //            length = clip.length;
-    //            break;
-    //        }
-    //    }
-    //    Debug.Log("length :" + length);
-    //    return length;
-    //}
 }

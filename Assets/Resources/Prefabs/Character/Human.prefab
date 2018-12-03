@@ -30,6 +30,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1116443379693170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4746077452781838}
+  - component: {fileID: 20026610913584354}
+  - component: {fileID: 81717733172751116}
+  - component: {fileID: 114950249113325008}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1133501578815308
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,6 +292,19 @@ Transform:
   m_Father: {fileID: 4054000200829340}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4746077452781838
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1116443379693170}
+  m_LocalRotation: {x: -0, y: 0, z: 0.000008726646, w: 1}
+  m_LocalPosition: {x: 0, y: 8.866302, z: -10}
+  m_LocalScale: {x: -3.333333, y: 3.333333, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4961332644203682}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4788625102941058
 Transform:
   m_ObjectHideFlags: 1
@@ -334,14 +365,55 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1100910376229506}
   m_LocalRotation: {x: 0, y: 0, z: 0.000008726646, w: 1}
-  m_LocalPosition: {x: -2.44, y: 3.79, z: 0}
+  m_LocalPosition: {x: -11.31, y: -2.29, z: 0}
   m_LocalScale: {x: -0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 4043076011250878}
   - {fileID: 4054000200829340}
+  - {fileID: 4746077452781838}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &20026610913584354
+Camera:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1116443379693170}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!50 &50403473818158928
 Rigidbody2D:
   serializedVersion: 4
@@ -391,6 +463,13 @@ PolygonCollider2D:
       - {x: -0.7274767, y: -3.1590903}
       - {x: 0.5841454, y: -3.1932702}
       - {x: 1.3681442, y: 0.23178658}
+--- !u!81 &81717733172751116
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1116443379693170}
+  m_Enabled: 1
 --- !u!95 &95549595779342606
 Animator:
   serializedVersion: 3
@@ -426,12 +505,33 @@ MonoBehaviour:
   vitality: 100
   moveForce: 365
   maxSpeed: 5
-  jumpClips: []
   jumpForce: 1000
   burnDamage: 10
   MaxDamage: 10
   burnInteval: 1
   turnLightRadius: 1
+  jumpClips:
+  - {fileID: 8300000, guid: 25f22cc48f9a26245a8e28cd6313e73a, type: 3}
+  switchClips:
+  - {fileID: 8300000, guid: 0a456ca812a891640903247cdac4ef66, type: 3}
+--- !u!114 &114950249113325008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1116443379693170}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc28cb525192e7c488df55d60788ce8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 4961332644203682}
+  rightUpCorner: {fileID: 0}
+  leftDownCorner: {fileID: 0}
+  smoothDampTime: 0.2
+  transform: {fileID: 0}
+  cameraOffset: {x: 0, y: 0, z: 0}
+  useFixedUpdate: 1
 --- !u!212 &212067727057499528
 SpriteRenderer:
   m_ObjectHideFlags: 1

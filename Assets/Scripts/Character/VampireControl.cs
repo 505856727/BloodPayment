@@ -16,10 +16,15 @@ public class VampireControl : MonoBehaviour {
     public Color m_ZeroHealthColor = Color.red;         // The color the health bar will be when on no health.
     public Image m_FillImage;                           // The image component of the slider.
     public Animator m_anim;
+    //音效
+    public AudioClip[] suckBloodClip;
 
     private float current_hp;
     private float suckTime = float.MinValue;
     private Vector3 originScale;
+
+    private SpriteRenderer[] bodys;//用来改变自身所有sprited的alpha值
+    private float originAlpha = 0.47f;
 
     private void Start()
     {
@@ -29,6 +34,7 @@ public class VampireControl : MonoBehaviour {
         {
             m_anim = transform.Find("vampfly_8").GetComponent<Animator>();
         }
+        bodys = GetComponentsInChildren<SpriteRenderer>();
     }
     private void Update()
     {
@@ -82,6 +88,9 @@ public class VampireControl : MonoBehaviour {
                             suckTime = Time.time;
                             if (m_anim)
                                 m_anim.SetBool("suckBlood", true);
+
+                            int i = Random.Range(0, suckBloodClip.Length);
+                            AudioSource.PlayClipAtPoint(suckBloodClip[i], transform.position);
                             break;
                         }
                     }
@@ -99,6 +108,12 @@ public class VampireControl : MonoBehaviour {
     {
         if (Input.GetMouseButton(0))
         {
+            foreach(var body in bodys)
+            {
+                Color fillColor = body.color;
+                fillColor.a = 1;
+                body.color = Color.Lerp(body.color, fillColor, 0.51f);
+            }
             gameObject.layer = 10;
             //GetComponent<Collider2D>().isTrigger = false;
             GetComponent<BoxCollider2D>().enabled = true;
@@ -109,6 +124,12 @@ public class VampireControl : MonoBehaviour {
             //GetComponent<Collider2D>().isTrigger = true;
             GetComponent<BoxCollider2D>().enabled = false;
             gameObject.layer = 11;
+            foreach (var body in bodys)
+            {
+                Color fillColor = body.color;
+                fillColor.a = originAlpha;
+                body.color = Color.Lerp(body.color, fillColor, 1f);
+            }
         }
     }
 
