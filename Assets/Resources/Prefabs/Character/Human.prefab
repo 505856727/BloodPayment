@@ -513,7 +513,7 @@ MonoBehaviour:
   hpSlider: {fileID: 0}
   speed: 4
   isjump: 0
-  jumpspeed: 40000
+  jumpspeed: 45000
 --- !u!114 &114950249113325008
 MonoBehaviour:
   m_ObjectHideFlags: 1
