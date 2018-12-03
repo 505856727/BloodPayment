@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4027687103315378}
   - component: {fileID: 114979260326639452}
   m_Layer: 0
-  m_Name: office2
+  m_Name: lineoffice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
