@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Human_PlayerController : MonoBehaviour
 {
@@ -118,7 +119,7 @@ public class Human_PlayerController : MonoBehaviour
         if (isBeingSucked)
             return;
         MoveCharacter();
-        if (Input.GetKeyDown(KeyCode.F) &&!isjump)
+        if (Input.GetKeyDown(KeyCode.F) && !isjump)
             TurnTrigger();
     }
 
@@ -129,11 +130,11 @@ public class Human_PlayerController : MonoBehaviour
         // The Speed animator parameter is set to the absolute value of the horizontal input.
         anim.SetFloat("Speed", Mathf.Abs(h));
 
-        if (h<0)
+        if (h < 0)
         {
             transform.Translate(-speed * Time.deltaTime, 0, 0);
         }
-        else if (h>0)
+        else if (h > 0)
         {
             transform.Translate(speed * Time.deltaTime, 0, 0);
         }
@@ -185,17 +186,32 @@ public class Human_PlayerController : MonoBehaviour
     //被吸血，有一定时间间隔地触发,只有当动画处于stand的时候才可以吸血
     public bool TakeSuckBlood(float suckDamage)
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("girlstand")|| anim.GetCurrentAnimatorStateInfo(0).IsName("girlblood"))
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("girlstand") || anim.GetCurrentAnimatorStateInfo(0).IsName("girlblood"))
         {
-            if (hpSlider)
-            {
-                hpSlider.value = vitality;
-            }
-            vitality -= suckDamage;
+            //if (hpSlider)
+            //{
+            //    hpSlider.value = vitality;
+            //}
+            //vitality -= suckDamage;
+            changeVitality((-1) * suckDamage);
             anim.SetBool("beingSuckedBlood", true);
             isBeingSucked = true;
             return true;
         }
         else return false;//角色在移动 无法吸血
+    }
+
+    public void changeVitality(float amount)
+    {
+        
+        vitality += amount;
+        if (vitality > 100)
+            vitality = 100;
+        if (hpSlider)
+        {
+            hpSlider.value = vitality;
+        }
+        if(vitality <0)
+            SceneManager.LoadScene("GameLose");
     }
 }

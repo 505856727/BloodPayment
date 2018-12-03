@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class VampireControl : MonoBehaviour {
     public float hp;//最大生命值
@@ -143,5 +144,7 @@ public class VampireControl : MonoBehaviour {
             // Interpolate the color of the bar between the choosen colours based on the current percentage of the starting health.
             m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor, current_hp / hp);
         }
+        if (current_hp < 0)
+            SceneManager.LoadScene("GameLose");
     }
 }
