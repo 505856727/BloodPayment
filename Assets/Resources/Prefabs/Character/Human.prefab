@@ -460,8 +460,8 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -0.066351816, y: 2.2727046}
       - {x: -1.0437406, y: 0.16998613}
-      - {x: -0.7274767, y: -3.1590903}
-      - {x: 0.5841454, y: -3.1932702}
+      - {x: -0.40036568, y: -2.7020855}
+      - {x: 0.15241653, y: -2.7495754}
       - {x: 1.3681442, y: 0.23178658}
 --- !u!81 &81717733172751116
 AudioListener:
@@ -513,7 +513,7 @@ MonoBehaviour:
   hpSlider: {fileID: 0}
   speed: 4
   isjump: 0
-  jumpspeed: 45000
+  jumpspeed: 46000
 --- !u!114 &114950249113325008
 MonoBehaviour:
   m_ObjectHideFlags: 1

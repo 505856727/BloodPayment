@@ -148,7 +148,10 @@ public class Human_PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isjump == false)
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpspeed * Time.deltaTime));
+            //GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpspeed * Time.deltaTime));
+            GetComponent<Rigidbody2D>().velocity = new Vector3(GetComponent<Rigidbody2D>().velocity.x, jumpspeed  + GetComponent<Rigidbody2D>().velocity.y);
+            print(GetComponent<Rigidbody2D>().velocity);
+            GetComponent<PolygonCollider2D>().offset = new Vector2(0, 2);
             //保证只跳了一次
             m_anim.SetTrigger("jump");
             isjump = true;
@@ -163,6 +166,7 @@ public class Human_PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "floor")
         {
             isjump = false;
+            GetComponent<PolygonCollider2D>().offset = new Vector2(0, 0);
         }
     }
 
