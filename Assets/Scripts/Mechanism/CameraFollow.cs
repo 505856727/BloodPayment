@@ -51,11 +51,12 @@ public class CameraFollow : MonoBehaviour
         Vector3 targetVec = target.position - cameraOffset;
         //先尝试移动一下镜头，然后判断是否超出屏幕边界
         transform.position = Vector3.SmoothDamp(transform.position, targetVec, ref _smoothDampVelocity, smoothDampTime);
+        //transform.position = targetVec;
 
         Vector3 CamrightUpCorner = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Screen.width + 50, Screen.height + 50, 0));
         Vector3 CamleftDownCorner = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(-50, -50, 0));
 
-        if(rightUpCorner && leftDownCorner)
+        if (rightUpCorner && leftDownCorner)
         {
             if (CamrightUpCorner.x > rightUpCorner.position.x || CamleftDownCorner.x < leftDownCorner.position.x)//超出边界，不可以移动X
             {
@@ -66,10 +67,10 @@ public class CameraFollow : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, temp.y, transform.position.z);
             }
         }
-        
+
         Vector3 fixZ = transform.position;
-		fixZ = new Vector3(transform.position.x, transform.position.y,  lastZCam);
-		transform.position = fixZ;
-	}
+        fixZ = new Vector3(transform.position.x, transform.position.y, lastZCam);
+        transform.position = fixZ;
+    }
 	
 }

@@ -17,9 +17,6 @@ public class Human_PlayerController : MonoBehaviour
     public float maxSpeed = 5f;             // The fastest the player can travel in the x axis.
     public AudioClip[] jumpClips;           // Array of clips for when the player jumps.
     public float jumpForce = 1000f;         // Amount of force added when the player jumps.
-    public AudioClip[] taunts;              // Array of clips for when the player taunts.
-    public float tauntProbability = 50f;    // Chance of a taunt happening.
-    public float tauntDelay = 1f;           // Delay for when the taunt should happen.
 
 
     private int tauntIndex;                 // The index of the taunts array indicating the most recent taunt.
@@ -45,11 +42,16 @@ public class Human_PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if(collision.gameObject.tag == "")
+    //}
+
     // Update is called once per frame
     void Update()
     {
         // The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
-        grounded = Physics2D.Linecast(transform.position, groundCheck.position);
+        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
         if (isBeingSucked)
             return;

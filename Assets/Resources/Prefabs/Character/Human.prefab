@@ -427,10 +427,7 @@ MonoBehaviour:
   moveForce: 365
   maxSpeed: 5
   jumpClips: []
-  jumpForce: 1500
-  taunts: []
-  tauntProbability: 50
-  tauntDelay: 1
+  jumpForce: 1000
   burnDamage: 10
   MaxDamage: 10
   burnInteval: 1
