@@ -29,17 +29,11 @@ public class VampireAttribute : MonoBehaviour {
             }
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void OnEnterSunLight(GameObject g, DynamicLight2D.DynamicLight light)//见到阳光
     {
         if (gameObject.GetInstanceID() == g.GetInstanceID())
         {
-            Debug.Log("OnEnterSunshine");
             //GetComponent<SpriteRenderer>().color = Color.red;
             burnTime = Time.time;//开始计时
             m_anim.SetBool("beLighted", true);
@@ -53,8 +47,6 @@ public class VampireAttribute : MonoBehaviour {
             {
                 if (Time.time - burnTime >= burnInteval)
                 {
-                    //burn
-                    Debug.Log("Burn ");
                     
                     //扣血跟距离挂钩
                     float rawDamage = burnDamage / (gameObject.transform.position - light.transform.position).sqrMagnitude;
@@ -71,8 +63,7 @@ public class VampireAttribute : MonoBehaviour {
     {
         if (gameObject.GetInstanceID() == g.GetInstanceID())
         {
-            Debug.Log("OnExitSunshine");
-            GetComponent<SpriteRenderer>().color = Color.white;
+            //GetComponent<SpriteRenderer>().color = Color.white;
             m_anim.SetBool("beLighted", false);
         }
     }
