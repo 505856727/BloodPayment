@@ -299,7 +299,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1116443379693170}
   m_LocalRotation: {x: -0, y: 0, z: 0.000008726646, w: 1}
-  m_LocalPosition: {x: 0, y: 8.866302, z: -10}
+  m_LocalPosition: {x: 0, y: 3.4, z: -10}
   m_LocalScale: {x: -3.333333, y: 3.333333, z: 1}
   m_Children: []
   m_Father: {fileID: 4961332644203682}
@@ -365,7 +365,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1100910376229506}
   m_LocalRotation: {x: 0, y: 0, z: 0.000008726646, w: 1}
-  m_LocalPosition: {x: -11.31, y: -2.29, z: 0}
+  m_LocalPosition: {x: -7.77, y: -3.99, z: 0}
   m_LocalScale: {x: -0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 4043076011250878}
@@ -503,9 +503,9 @@ MonoBehaviour:
   isBeingSucked: 0
   jump: 0
   vitality: 100
-  moveForce: 365
+  moveForce: 200
   maxSpeed: 5
-  jumpForce: 1000
+  jumpForce: 1200
   burnDamage: 10
   MaxDamage: 10
   burnInteval: 1
