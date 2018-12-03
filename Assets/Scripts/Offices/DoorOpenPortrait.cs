@@ -40,7 +40,7 @@ public class DoorOpenPortrait : MonoBehaviour {
         }
         else if (real == direction.up && !islast && (collision.gameObject.layer == 10 || collision.gameObject.layer == 8))
         {
-            GetComponent<SpriteRenderer>().sprite = buttomdown;
+            GetComponent<SpriteRenderer>().sprite = buttomup;
             StopCoroutine("OfficeUp");
             StartCoroutine("OfficeDown");
         }
