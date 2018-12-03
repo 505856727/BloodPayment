@@ -7,6 +7,8 @@ public class DoorOpenTranserve : MonoBehaviour {
     public GameObject office;
     public Vector3 officeori;
     public Vector3 officepos;
+    public Sprite buttomup;
+    public Sprite buttomdown;
     public bool islast;
     public float speed;
 
