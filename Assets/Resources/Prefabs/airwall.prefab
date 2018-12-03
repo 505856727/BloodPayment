@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 61655477275986124}
   - component: {fileID: 61692414283493038}
   - component: {fileID: 114904297804355280}
+  - component: {fileID: 114434582289672472}
   m_Layer: 12
   m_Name: airwall
   m_TagString: Untagged
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1447747765207066}
   m_LocalRotation: {x: 0, y: 0, z: 0.000008726646, w: 1}
-  m_LocalPosition: {x: -5.31, y: -3.45, z: 0.24777222}
+  m_LocalPosition: {x: 1.2312083, y: -1.6071446, z: 0.24777222}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -144,6 +145,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 19.367546, y: 0.94997215}
   m_EdgeRadius: 0
+--- !u!114 &114434582289672472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1447747765207066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36be93eaca62bf14ca0ec703a2d7a078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &114904297804355280
 MonoBehaviour:
   m_ObjectHideFlags: 1
