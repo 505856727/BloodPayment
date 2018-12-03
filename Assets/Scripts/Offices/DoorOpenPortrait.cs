@@ -9,9 +9,9 @@ public class DoorOpenPortrait : MonoBehaviour {
     public Sprite buttomup;
     [Header("按下时图片")]
     public Sprite buttomdown;
-    [Header("初始位置")]
+    [Header("最高位置")]
     public Vector3 officeup;
-    [Header("终止位置")]
+    [Header("最低位置")]
     public Vector3 officedown;
     [Header("是否是触发式")]
     public bool istrigger;

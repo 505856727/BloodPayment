@@ -93,7 +93,7 @@ public class Human_PlayerController : MonoBehaviour
         {
             // Play a random jump audio clip.
             int i = Random.Range(0, jumpClips.Length);
-            AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
+            //AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
 
             // Add a vertical force to the player.
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce * vitality / 100.0f));
