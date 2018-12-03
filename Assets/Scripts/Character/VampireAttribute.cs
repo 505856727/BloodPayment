@@ -7,7 +7,7 @@ public class VampireAttribute : MonoBehaviour {
     public float MaxDamage = 10.0f;//灼伤的最大伤害，防止暴毙
     public float burnInteval = 1.0f;//被阳光灼烧的间隔
     private float burnTime = float.MinValue;
-    private DynamicLight2D.DynamicLight[] SunLights;
+    public DynamicLight2D.DynamicLight[] SunLights;
     private VampireControl controller;
     //动画状态机
     public Animator m_anim;
