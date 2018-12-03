@@ -474,6 +474,7 @@ MonoBehaviour:
   burnDamage: 10
   MaxDamage: 10
   burnInteval: 1
+  SunLights: []
   m_anim: {fileID: 95583770445521920}
   beLightedClip:
   - {fileID: 8300000, guid: c8f985323d346584ba30376f8bc41dd0, type: 3}
