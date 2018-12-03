@@ -7,19 +7,11 @@ public class Human_PlayerController : MonoBehaviour
     [HideInInspector]
     public bool facingRight = true;         // For determining which way the player is currently facing.
     public bool isBeingSucked = false;      //被吸血的时候无法移动和跳跃
-    [HideInInspector]
-    public bool jump = false;               // Condition for whether the player should jump.
 
     public float vitality = 100.0f; //活力对角色移动力和跳跃力的影响，暂时是线性的
-    public float moveForce = 365f;          // Amount of force added to move the player left and right.
-    public float maxSpeed = 5f;             // The fastest the player can travel in the x axis.
-
-    public float jumpForce = 1000f;         // Amount of force added when the player jumps.
-
-
-    private int tauntIndex;                 // The index of the taunts array indicating the most recent taunt.
-    private Transform groundCheck;          // A position marking where to check if the player is grounded.
-    private bool grounded = false;          // Whether or not the player is grounded.
+    //public float moveForce = 365f;          // Amount of force added to move the player left and right.
+    //public float maxSpeed = 5f;             // The fastest the player can travel in the x axis.
+    //public float jumpForce = 1000f;         // Amount of force added when the player jumps.
     private Animator anim;                  // Reference to the player's animator component.
 
     public float burnDamage = 10.0f;//burn Damage代表强度，并不代表实际伤害，实际伤害随着距离越近越高
@@ -34,14 +26,12 @@ public class Human_PlayerController : MonoBehaviour
     public AudioClip[] jumpClips;           // Array of clips for when the player jumps.
     public AudioClip[] switchClips;           // Array of clips for when the player jumps.
                                               // Use this for initialization
-                                              //void Start()
-                                              //{
-                                              //    //初始化阳光触发时间
-                                              //    m_anim = GetComponent<Animator>();
-                                              //    // Setting up references.
-                                              //    groundCheck = transform.Find("groundCheck");
-                                              //    anim = GetComponent<Animator>();
-                                              //}
+    void Start()
+    {
+        //初始化阳光触发时间
+        m_anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
+    }
 
     //// Update is called once per frame
     //void Update()
@@ -106,38 +96,61 @@ public class Human_PlayerController : MonoBehaviour
     //    }
     //}
 
-    //void Flip()
-    //{
-    //    // Switch the way the player is labelled as facing.
-    //    facingRight = !facingRight;
+    void Flip()
+    {
+        // Switch the way the player is labelled as facing.
+        facingRight = !facingRight;
 
-    //    // Multiply the player's x local scale by -1.
-    //    Vector3 theScale = transform.localScale;
-    //    theScale.x *= -1;
-    //    transform.localScale = theScale;
-    //}
+        // Multiply the player's x local scale by -1.
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
     public float speed;
     public bool isjump;
     public float jumpspeed;
     void Update()
     {
+        if (isBeingSucked)
+            return;
         MoveCharacter();
+        if (Input.GetKeyDown(KeyCode.F) &&!isjump)
+            TurnTrigger();
     }
 
     void MoveCharacter()
     {
-        if (Input.GetKey(KeyCode.A))
+        float h = Input.GetAxis("Horizontal");
+
+        // The Speed animator parameter is set to the absolute value of the horizontal input.
+        anim.SetFloat("Speed", Mathf.Abs(h));
+
+        if (h<0)
         {
             transform.Translate(-speed * Time.deltaTime, 0, 0);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (h>0)
         {
             transform.Translate(speed * Time.deltaTime, 0, 0);
         }
+        // If the input is moving the player right and the player is facing left...
+        if (h > 0 && !facingRight)
+            // ... flip the player.
+            Flip();
+        // Otherwise if the input is moving the player left and the player is facing right...
+        else if (h < 0 && facingRight)
+            // ... flip the player.
+            Flip();
+
         if (Input.GetKeyDown(KeyCode.Space) && isjump == false)
         {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpspeed * Time.deltaTime));
+            //保证只跳了一次
+            m_anim.SetTrigger("jump");
             isjump = true;
+            //音效
+            int i = Random.Range(0, jumpClips.Length);
+            AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
         }
     }
 
