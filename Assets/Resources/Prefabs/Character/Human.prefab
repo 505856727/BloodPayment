@@ -501,11 +501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 1
   isBeingSucked: 0
-  jump: 0
   vitality: 100
-  moveForce: 200
-  maxSpeed: 5
-  jumpForce: 1200
   burnDamage: 10
   MaxDamage: 10
   burnInteval: 1
@@ -514,6 +510,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 25f22cc48f9a26245a8e28cd6313e73a, type: 3}
   switchClips:
   - {fileID: 8300000, guid: 0a456ca812a891640903247cdac4ef66, type: 3}
+  hpSlider: {fileID: 0}
+  speed: 4
+  isjump: 0
+  jumpspeed: 50000
 --- !u!114 &114950249113325008
 MonoBehaviour:
   m_ObjectHideFlags: 1

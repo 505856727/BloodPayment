@@ -89,6 +89,7 @@ public class VampireControl : MonoBehaviour {
                             if (m_anim)
                                 m_anim.SetBool("suckBlood", true);
 
+                            DecreaseHP((-1) * suckDamage);
                             int i = Random.Range(0, suckBloodClip.Length);
                             AudioSource.PlayClipAtPoint(suckBloodClip[i], transform.position);
                             break;
@@ -142,6 +143,5 @@ public class VampireControl : MonoBehaviour {
             // Interpolate the color of the bar between the choosen colours based on the current percentage of the starting health.
             m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor, current_hp / hp);
         }
-            
     }
 }
