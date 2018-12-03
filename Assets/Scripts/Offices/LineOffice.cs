@@ -19,39 +19,28 @@ public class LineOffice : MonoBehaviour {
         panspeed = (high.transform.position.y - low.transform.position.y) * speed;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKey(KeyCode.I))
-        {
-            LeftDown();
-        }
-        else if (Input.GetKey(KeyCode.O))
-        {
-            RightDown();
-        }
-	}
 
-    public void LeftDown()
+    public void LeftDown(int count)
     {
         if (lineright.transform.localScale.y > 0.3)
         {
-            lineleft.transform.localScale += new Vector3(0, speed * Time.deltaTime, 0);
-            lineright.transform.localScale -= new Vector3(0, speed * Time.deltaTime, 0);
-            panleft.transform.Translate(0, -panspeed * Time.deltaTime, 0);
-            panright.transform.Translate(0, panspeed * Time.deltaTime, 0);
-            wheel.transform.Rotate(0, 0, rotatespeed * Time.deltaTime);
+            lineleft.transform.localScale += new Vector3(0, count * speed * Time.deltaTime, 0);
+            lineright.transform.localScale -= new Vector3(0, count * speed * Time.deltaTime, 0);
+            panleft.transform.Translate(0, -count * panspeed * Time.deltaTime, 0);
+            panright.transform.Translate(0, count * panspeed * Time.deltaTime, 0);
+            wheel.transform.Rotate(0, 0, count * rotatespeed * Time.deltaTime);
         }
     }
 
-    public void RightDown()
+    public void RightDown(int count)
     {
         if (lineleft.transform.localScale.y > 0.3)
         {
-            lineright.transform.localScale += new Vector3(0, speed * Time.deltaTime, 0);
-            lineleft.transform.localScale -= new Vector3(0, speed * Time.deltaTime, 0);
-            panleft.transform.Translate(0, panspeed * Time.deltaTime, 0);
-            panright.transform.Translate(0, -panspeed * Time.deltaTime, 0);
-            wheel.transform.Rotate(0, 0, -rotatespeed * Time.deltaTime);
+            lineright.transform.localScale += new Vector3(0, count * speed * Time.deltaTime, 0);
+            lineleft.transform.localScale -= new Vector3(0, count * speed * Time.deltaTime, 0);
+            panleft.transform.Translate(0, count * panspeed * Time.deltaTime, 0);
+            panright.transform.Translate(0, -count * panspeed * Time.deltaTime, 0);
+            wheel.transform.Rotate(0, 0, -count * rotatespeed * Time.deltaTime);
         }
     }
 }

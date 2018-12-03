@@ -9,15 +9,26 @@ public class PanOffice : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 10 || collision.gameObject.layer == 8)
+        if (collision.gameObject.layer == 10)
         {
             if (isleft)
             {
-                lineoffice.GetComponent<LineOffice>().LeftDown();
+                lineoffice.GetComponent<LineOffice>().LeftDown(2);
             }
             else
             {
-                lineoffice.GetComponent<LineOffice>().RightDown();
+                lineoffice.GetComponent<LineOffice>().RightDown(2);
+            }
+        }
+        else if (collision.gameObject.layer == 8)
+        {
+            if (isleft)
+            {
+                lineoffice.GetComponent<LineOffice>().LeftDown(1);
+            }
+            else
+            {
+                lineoffice.GetComponent<LineOffice>().RightDown(1);
             }
         }
     }
