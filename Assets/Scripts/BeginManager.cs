@@ -19,20 +19,23 @@ public class BeginManager : MonoBehaviour {
 	void Update () {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit= Physics2D.Raycast(new Vector2(ray.origin.x, ray.origin.y), Vector2.down);
-        if (hit.collider.gameObject == start)
+        if (hit.collider)
         {
-            choose.transform.position = startpos;
-            if (Input.GetMouseButtonDown(0))
+            if (hit.collider.gameObject == start)
             {
-                SceneManager.LoadScene("Level_1");
+                choose.transform.position = startpos;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    SceneManager.LoadScene("Level_1");
+                }
             }
-        }
-        else if (hit.collider.gameObject == quit)
-        {
-            choose.transform.position = quitpos;
-            if (Input.GetMouseButtonDown(0))
+            else if (hit.collider.gameObject == quit)
             {
-                Application.Quit();
+                choose.transform.position = quitpos;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Application.Quit();
+                }
             }
         }
         

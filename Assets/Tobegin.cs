@@ -10,6 +10,14 @@ public class Tobegin : MonoBehaviour {
         StartCoroutine(Gotobegin());
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            SceneManager.LoadScene("Begin");
+        }
+    }
+
     IEnumerator Gotobegin()
     {
         yield return new WaitForSeconds(resttime);
