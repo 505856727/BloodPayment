@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Tobegin : MonoBehaviour {
+    public float resttime;
     private void Start()
     {
         StartCoroutine(Gotobegin());
@@ -11,7 +12,7 @@ public class Tobegin : MonoBehaviour {
 
     IEnumerator Gotobegin()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(resttime);
         SceneManager.LoadScene("Begin");
     }
 }
