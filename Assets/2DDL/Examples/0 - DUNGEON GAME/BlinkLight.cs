@@ -58,8 +58,6 @@ public class BlinkLight : MonoBehaviour {
 				normalScalarObj.transform.localScale = lastScale;
 				yield return null;
 			}
-
-
 		}
 	}
 
