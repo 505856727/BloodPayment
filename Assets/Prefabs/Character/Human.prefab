@@ -421,6 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 1
+  isBeingSucked: 0
   jump: 0
   vitality: 100
   moveForce: 365

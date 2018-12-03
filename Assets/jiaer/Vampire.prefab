@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61350531137461640}
   - component: {fileID: 50008790903645926}
   - component: {fileID: 114634290133510206}
-  - component: {fileID: 70691629693610536}
+  - component: {fileID: 60749091686217044}
   m_Layer: 11
   m_Name: Vampire
   m_TagString: Untagged
@@ -324,8 +324,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1032332069581882}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.01, y: -0.67, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.000008726646, w: 1}
+  m_LocalPosition: {x: 2.24, y: 1.97, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0}
   m_Children:
   - {fileID: 4173781493660496}
@@ -366,6 +366,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!60 &60749091686217044
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032332069581882}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.102291554, y: 2.023104}
+      - {x: -0.6100171, y: 0.7182505}
+      - {x: -0.62191755, y: -2.4800837}
+      - {x: 0.5536534, y: -2.4459803}
+      - {x: 0.5077159, y: 0.6159558}
 --- !u!61 &61350531137461640
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -391,21 +420,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.0870137, y: 7.3326664}
   m_EdgeRadius: 0
---- !u!70 &70691629693610536
-CapsuleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1032332069581882}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.5, y: -0.3}
-  m_Size: {x: 2, y: 7}
-  m_Direction: 0
 --- !u!95 &95583770445521920
 Animator:
   serializedVersion: 3
@@ -459,6 +473,7 @@ MonoBehaviour:
   burnDamage: 10
   MaxDamage: 10
   burnInteval: 1
+  m_anim: {fileID: 95583770445521920}
 --- !u!212 &212036469473618066
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -916,7 +931,7 @@ SpriteRenderer:
   m_Size: {x: 6.4, y: 6.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!212 &212924267356566420

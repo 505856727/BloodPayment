@@ -58,7 +58,7 @@ public class Human_PlayerController : MonoBehaviour
             jump = true;
 
         if (Input.GetKeyDown(KeyCode.F) && grounded)
-            TurnLight();
+            TurnTrigger();
     }
 
     void FixedUpdate()
@@ -119,12 +119,13 @@ public class Human_PlayerController : MonoBehaviour
         transform.localScale = theScale;
     }
 
-    void TurnLight()//关闭或者打开灯光
+    void TurnTrigger()//关闭或者打开机关
     {
-        //检测周围是否有灯光,灯光必须为Trigger，要覆盖才有效果
+        anim.SetTrigger("RaiseHand");
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1);
         foreach (var collider in colliders)
         {
+            //检测周围是否有灯光,灯光必须为Trigger，要覆盖才有效果
             if (collider.CompareTag("TurnOn"))
             {
                 collider.GetComponent<TurnOn>().turnOn();
@@ -143,7 +144,6 @@ public class Human_PlayerController : MonoBehaviour
             return true;
         }
         else return false;//角色在移动 无法吸血
-        
     }
 
     //IEnumerator recoverFromSuckingBlood()

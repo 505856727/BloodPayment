@@ -8,6 +8,8 @@ public class VampireAttribute : MonoBehaviour {
     public float burnInteval = 1.0f;//被阳光灼烧的间隔
     private float burnTime = float.MinValue;
     private DynamicLight2D.DynamicLight[] SunLights;
+    //动画状态机
+    public Animator m_anim;
     // Use this for initialization
     void Start () {
         //初始化阳光触发时间
@@ -36,6 +38,7 @@ public class VampireAttribute : MonoBehaviour {
             Debug.Log("OnEnterSunshine");
             GetComponent<SpriteRenderer>().color = Color.red;
             burnTime = Time.time;//开始计时
+            m_anim.SetBool("beLighted", true);
         }
     }
 
@@ -48,6 +51,7 @@ public class VampireAttribute : MonoBehaviour {
                 {
                     //burn
                     Debug.Log("Burn ");
+                    
                     //扣血跟距离挂钩
                     //Debug.Log((gameObject.transform.position - light.transform.position));
                     float rawDamage = burnDamage / (gameObject.transform.position - light.transform.position).sqrMagnitude;
@@ -64,6 +68,7 @@ public class VampireAttribute : MonoBehaviour {
         {
             Debug.Log("OnExitSunshine");
             GetComponent<SpriteRenderer>().color = Color.white;
+            m_anim.SetBool("beLighted", false);
         }
     }
 }
