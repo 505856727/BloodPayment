@@ -14,10 +14,7 @@ public class HandleOffice : MonoBehaviour {
     {
         if (collision.gameObject.layer == 10 || collision.gameObject.layer == 8)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                StartCoroutine(RotateHandle());
-            }
+             StartCoroutine(RotateHandle());            
         }
     }
 
