@@ -77,11 +77,13 @@ public class VampireControl : MonoBehaviour {
                 {
                     if (collider.CompareTag("Blood"))
                     {
-                        collider.GetComponent<Human_PlayerController>().TakeSuckBlood(suckDamage);
-                        suckTime = Time.time;
-                        if (m_anim)
-                            m_anim.SetBool("suckBlood", true);
-                        break;
+                        if (collider.GetComponent<Human_PlayerController>().TakeSuckBlood(suckDamage))//如果吸血成功
+                        {
+                            suckTime = Time.time;
+                            if (m_anim)
+                                m_anim.SetBool("suckBlood", true);
+                            break;
+                        }
                     }
                 }
             }

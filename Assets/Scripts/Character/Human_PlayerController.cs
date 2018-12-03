@@ -6,6 +6,7 @@ public class Human_PlayerController : MonoBehaviour
 {
     [HideInInspector]
     public bool facingRight = true;         // For determining which way the player is currently facing.
+    public bool isBeingSucked = false;      //被吸血的时候无法移动和跳跃
     [HideInInspector]
     public bool jump = false;               // Condition for whether the player should jump.
 
@@ -50,6 +51,8 @@ public class Human_PlayerController : MonoBehaviour
         // The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
+        if (isBeingSucked)
+            return;
         // If the jump button is pressed and the player is grounded then the player should jump.
         if (Input.GetButtonDown("Jump") && grounded)
             jump = true;
@@ -60,6 +63,8 @@ public class Human_PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isBeingSucked)
+            return;
         // Cache the horizontal input.
         float h = Input.GetAxis("Horizontal");
 
@@ -118,7 +123,7 @@ public class Human_PlayerController : MonoBehaviour
     {
         //检测周围是否有灯光,灯光必须为Trigger，要覆盖才有效果
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1);
-        foreach(var collider in colliders)
+        foreach (var collider in colliders)
         {
             if (collider.CompareTag("TurnOn"))
             {
@@ -127,9 +132,39 @@ public class Human_PlayerController : MonoBehaviour
         }
     }
 
-    //被吸血
-    public void TakeSuckBlood(float suckDamage)
+    //被吸血，有一定时间间隔地触发,只有当动画处于stand的时候才可以吸血
+    public bool TakeSuckBlood(float suckDamage)
     {
-        vitality -= suckDamage;
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("girlstand")|| anim.GetCurrentAnimatorStateInfo(0).IsName("girlblood"))
+        {
+            vitality -= suckDamage;
+            anim.SetBool("beingSuckedBlood", true);
+            isBeingSucked = true;
+            return true;
+        }
+        else return false;//角色在移动 无法吸血
+        
     }
+
+    //IEnumerator recoverFromSuckingBlood()
+    //{
+    //    yield return new WaitForSeconds(GetAnimLengthByName("girlblood"));
+    //    anim.SetBool("beingSuckedBlood", false);
+    //}
+
+    //public float GetAnimLengthByName(string name)
+    //{
+    //    float length = 0;
+    //    AnimationClip[] clips = anim.runtimeAnimatorController.animationClips;
+    //    foreach (AnimationClip clip in clips)
+    //    {
+    //        if (clip.name.Equals(name))
+    //        {
+    //            length = clip.length;
+    //            break;
+    //        }
+    //    }
+    //    Debug.Log("length :" + length);
+    //    return length;
+    //}
 }
