@@ -11,6 +11,7 @@ public class Recover : MonoBehaviour {
             if (temp)
             {
                 temp.changeVitality(20.0f);
+                temp.Recover();
             }
             Destroy(gameObject);
         }

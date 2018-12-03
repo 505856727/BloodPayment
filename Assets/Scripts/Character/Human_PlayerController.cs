@@ -26,7 +26,8 @@ public class Human_PlayerController : MonoBehaviour
     private Animator m_anim;
 
     public AudioClip[] jumpClips;           // Array of clips for when the player jumps.
-    public AudioClip[] switchClips;           // Array of clips for when the player jumps.
+    public AudioClip[] switchClips;
+    public AudioClip[] RecoverClips;
 
     //血条，或者渴望值的Slider
     public Slider hpSlider;
@@ -217,5 +218,11 @@ public class Human_PlayerController : MonoBehaviour
         }
         if(vitality <0)
             SceneManager.LoadScene("GameLose");
+    }
+
+    public void Recover()
+    {
+        int i = Random.Range(0, RecoverClips.Length);
+        AudioSource.PlayClipAtPoint(RecoverClips[i], transform.position);
     }
 }
