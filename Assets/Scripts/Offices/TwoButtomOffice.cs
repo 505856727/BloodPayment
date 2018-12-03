@@ -19,7 +19,7 @@ public class TwoButtomOffice : MonoBehaviour {
             StartCoroutine("LeftMove");
             ismove = true;
         }
-        else if((!leftbuttom.GetComponent<ButtomDown>().isdown || !rightbuttom.GetComponent<ButtomDown>().isdown)&& ismove)
+        else if (!islast && (!leftbuttom.GetComponent<ButtomDown>().isdown || !rightbuttom.GetComponent<ButtomDown>().isdown) && ismove)
         {
             StopCoroutine("LeftMove");
             StartCoroutine("RightMove");
