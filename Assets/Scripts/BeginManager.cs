@@ -10,6 +10,10 @@ public class BeginManager : MonoBehaviour {
     public Vector3 quitpos;
     public GameObject choose;
     public AudioClip[] ClickClips;
+    
+    public GameObject []StoryLine;
+    public GameObject StartPage;
+    public GameObject StoryPage;
 
     // Use this for initialization
     void Start () {
@@ -21,33 +25,47 @@ public class BeginManager : MonoBehaviour {
 	void Update () {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit= Physics2D.Raycast(new Vector2(ray.origin.x, ray.origin.y), Vector2.down);
-        if (hit.collider.gameObject == start)
+        if (hit)
         {
-            choose.transform.position = startpos;
-            if (Input.GetMouseButtonDown(0))
+            if (hit.collider.gameObject == start)
             {
-                int i = Random.Range(0, ClickClips.Length);
-                AudioSource.PlayClipAtPoint(ClickClips[i], transform.position);
+                choose.transform.position = startpos;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    int i = Random.Range(0, ClickClips.Length);
+                    AudioSource.PlayClipAtPoint(ClickClips[i], transform.position);
 
-                Invoke("EnterGame", 0.5f);
+                    StartPage.SetActive(false);
+                    StoryPage.SetActive(true);
+                    StartCoroutine(StoryLineTelling());
+                    //Invoke("EnterGame", 0.5f);
+                }
+            }
+            else if (hit.collider.gameObject == quit)
+            {
+                choose.transform.position = quitpos;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    int i = Random.Range(0, ClickClips.Length);
+                    AudioSource.PlayClipAtPoint(ClickClips[i], transform.position);
+
+                    Invoke("QuitGame", 0.5f);
+                }
             }
         }
-        else if (hit.collider.gameObject == quit)
-        {
-            choose.transform.position = quitpos;
-            if (Input.GetMouseButtonDown(0))
-            {
-                int i = Random.Range(0, ClickClips.Length);
-                AudioSource.PlayClipAtPoint(ClickClips[i], transform.position);
-
-                Invoke("QuitGame", 0.5f);
-            }
-        }
-        
     }
 
-    public void EnterGame()
+    IEnumerator StoryLineTelling()
     {
+        int i = 0;
+        foreach(var line in StoryLine)
+        {
+            line.SetActive(true);
+            yield return new WaitForSeconds(3.0f);
+            StoryLine[i].SetActive(false);
+            i++;
+        }
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Level_1");
     }
 
